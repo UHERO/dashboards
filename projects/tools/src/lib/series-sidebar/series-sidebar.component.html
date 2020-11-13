@@ -1,0 +1,12 @@
+<div class="col-3 p-0 h-100 w-sidebar navbar-collapse collapse d-none d-md-flex sidebar">
+  <div class="navbar-dark bg-dark position-fixed h-100 w-sidebar">
+    <ng-template ngFor let-measurement [ngForOf]="dashboardSeries" let-i="index">
+      <button class="btn btn-link" type="button" (click)="updateSelectedMeasurement(measurement, dashboardSeries)">
+        {{measurement.name}}
+      </button>
+        <select *ngIf="measurement.geographies.length > 1 && measurement.selected" class="form-control">
+          <option *ngFor="let geo of measurement.geographies">{{geo.name}}</option>
+        </select>
+    </ng-template>
+  </div>
+</div>

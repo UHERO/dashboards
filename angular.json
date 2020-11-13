@@ -2,5 +2,172 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "high-frequency-dashboard": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/high-frequency-dashboard",
+      "sourceRoot": "projects/high-frequency-dashboard/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/high-frequency-dashboard",
+            "index": "projects/high-frequency-dashboard/src/index.html",
+            "main": "projects/high-frequency-dashboard/src/main.ts",
+            "polyfills": "projects/high-frequency-dashboard/src/polyfills.ts",
+            "tsConfig": "projects/high-frequency-dashboard/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/high-frequency-dashboard/src/favicon.ico",
+              "projects/high-frequency-dashboard/src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "projects/high-frequency-dashboard/src/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/high-frequency-dashboard/src/environments/environment.ts",
+                  "with": "projects/high-frequency-dashboard/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "high-frequency-dashboard:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "high-frequency-dashboard:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "high-frequency-dashboard:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/high-frequency-dashboard/src/test.ts",
+            "polyfills": "projects/high-frequency-dashboard/src/polyfills.ts",
+            "tsConfig": "projects/high-frequency-dashboard/tsconfig.spec.json",
+            "karmaConfig": "projects/high-frequency-dashboard/karma.conf.js",
+            "assets": [
+              "projects/high-frequency-dashboard/src/favicon.ico",
+              "projects/high-frequency-dashboard/src/assets"
+            ],
+            "styles": [
+              "projects/high-frequency-dashboard/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/high-frequency-dashboard/tsconfig.app.json",
+              "projects/high-frequency-dashboard/tsconfig.spec.json",
+              "projects/high-frequency-dashboard/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/high-frequency-dashboard/e2e/protractor.conf.js",
+            "devServerTarget": "high-frequency-dashboard:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "high-frequency-dashboard:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "tools": {
+      "projectType": "library",
+      "root": "projects/tools",
+      "sourceRoot": "projects/tools/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/tools/tsconfig.lib.json",
+            "project": "projects/tools/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/tools/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/tools/src/test.ts",
+            "tsConfig": "projects/tools/tsconfig.spec.json",
+            "karmaConfig": "projects/tools/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/tools/tsconfig.lib.json",
+              "projects/tools/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }},
+  "defaultProject": "high-frequency-dashboard"
 }
