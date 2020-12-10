@@ -11,6 +11,7 @@ export class ApiService {
   private headers: HttpHeaders;
   private httpOptions;
   private cachedMeasureSeries = [];
+  private cachedSeries = [];
 
   constructor(
     @Inject('environment') private environment,
@@ -26,18 +27,36 @@ export class ApiService {
     };
   }
 
-  fetchMeasurementSeries(id: number, noCache: boolean) {
-    if (this.cachedMeasureSeries[id]) {
-      return observableOf(this.cachedMeasureSeries[id]);
+  fetchMeasurementSeries(id: number, geo: string, freq: string, noCache: boolean) {
+    if (this.cachedMeasureSeries[id + geo + freq]) {
+      console.log('cached', this.cachedMeasureSeries)
+      return observableOf(this.cachedMeasureSeries[id + geo + freq]);
     } else {
       const caching = noCache ? '&nocache' : '';
-      let measureSeries$ = this.http.get(`${this.baseUrl}/measurement/series?id=${id}&expand=true${caching}`, this.httpOptions).pipe(
+      let measureSeries$ = this.http.get(`${this.baseUrl}/measurement/series?id=${id}&geo=${geo}&freq=${freq}&expand=true${caching}`, this.httpOptions).pipe(
         map(mapData),
         tap(val => {
-          this.cachedMeasureSeries[id] = val;
+          this.cachedMeasureSeries[id + geo + freq] = val;
           measureSeries$ = null;
         }), );
       return measureSeries$;
+    }
+  }
+
+  fetchSeries(name: string, noCache: boolean) {
+    if (this.cachedSeries[name]) {
+      console.log('cachedSeries', this.cachedSeries[name])
+      return observableOf(this.cachedSeries[name]);
+    } else {
+      const caching = noCache ? '&nocache' : '';
+      let packageSeries$ = this.http.get(`${this.baseUrl}/series?name=${name}&u=uhero&expand=true${caching}`, this.httpOptions).pipe(
+        map(mapData),
+        tap(val => {
+          this.cachedSeries[name] = val;
+          packageSeries$ = null;
+        }),
+      );
+      return packageSeries$;
     }
   }
 }

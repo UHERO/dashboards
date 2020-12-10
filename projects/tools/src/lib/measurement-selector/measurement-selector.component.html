@@ -1,0 +1,5 @@
+<select *ngIf="measurements.length > 1" [ngModel]="selectedMeasurement?.baseNames" (ngModelChange)="onChange($event)" class="custom-select" aria-label="measurement-selector">
+  <option [ngValue]="measurement?.baseNames" *ngFor="let measurement of measurements">
+      {{measurement.name}}
+  </option>
+</select>

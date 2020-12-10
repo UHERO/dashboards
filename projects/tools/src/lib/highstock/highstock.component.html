@@ -1,0 +1,14 @@
+<highcharts-chart *ngIf="showChart && chartOptions"
+[Highcharts]="Highcharts"
+[constructorType]="chartConstructor"
+[options]="chartOptions"
+[(update)]="updateChart"
+style="width: 100%; height: 400px; display: block;"
+></highcharts-chart>
+<!-- <highcharts-chart *ngIf="showChart && displayYoyChart"
+[Highcharts]="Highcharts"
+[constructorType]="chartConstructor"
+[options]="yoyChartOptions"
+[(update)]="updateChart"
+style="width: 100%; height: 400px; display: block;"
+></highcharts-chart> -->

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Injectable, Inject } from '@angular/core';
+import { Component, OnInit, Input, Injectable, Inject, Output } from '@angular/core';
+import { EventEmitter } from 'protractor';
 import { ApiService } from '../api.service';
+import { HelperService } from '../helper.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'lib-series-sidebar',
@@ -8,20 +10,23 @@ import { ApiService } from '../api.service';
   styleUrls: ['./series-sidebar.component.scss'],
 })
 export class SeriesSidebarComponent implements OnInit {
+  @Input() dashboardData: Array<any>;
+  //@Output() updateDashboardView = new EventEmitter();
+  currentGeo;
 
   constructor(
-    @Inject('dashboardSeries') public dashboardSeries: Array<any>
-  ) {}
+    private helperService: HelperService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+) {}
 
   ngOnInit(): void {
-    console.log(this.dashboardSeries)
+    console.log(this.dashboardData);
   }
 
-  updateSelectedMeasurement(measurement, dashboardSeries) {
-    const prevSelected = dashboardSeries.find(m => m.selected);
-    prevSelected.selected = !prevSelected;
-    const currSelected = dashboardSeries.find(m => m.name === measurement.name);
-    currSelected.selected = !currSelected.selected;
-    console.log('update', dashboardSeries)
+  updateSelectedCategory(category) {
+    this.helperService.updateSelectedCategory(category);
+    //this.updateDashboardView.emit()
+    this.router.navigate([`/`], { queryParams: {cat: category.name.replace(/\s/g, '')}})
   }
 }

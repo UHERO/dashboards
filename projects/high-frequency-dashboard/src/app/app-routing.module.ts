@@ -5,13 +5,15 @@ import { DashboardViewComponent } from 'tools';
 const routes: Routes = [
   {
     path: '',
-    component: DashboardViewComponent
+    component: DashboardViewComponent,
+    runGuardsAndResolvers: 'paramsOrQueryParamsChange'
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-    useHash: true
+    useHash: true,
+    onSameUrlNavigation: 'reload'
   })],
   exports: [RouterModule]
 })
