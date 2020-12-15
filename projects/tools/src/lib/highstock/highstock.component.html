@@ -1,4 +1,5 @@
 <p class="data-source" *ngIf="metadata?.source">Source: <a [attr.href]="metadata?.link">{{metadata?.source}}</a></p>
+<i *ngIf="loading" class="fas fa-spinner fa-spin loading-icon"></i>
 <highcharts-chart *ngIf="showChart && chartOptions"
 [Highcharts]="Highcharts"
 [constructorType]="chartConstructor"

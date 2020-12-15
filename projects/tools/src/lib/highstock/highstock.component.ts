@@ -41,7 +41,7 @@ export class HighstockComponent implements OnChanges {
     this.helperService
       .getSeriesData(`${this.measurementName}@${this.selectedGeo.handle}.${this.selectedFreq.handle}`)
       .then((data) => {
-        console.log('data', data);
+        this.loading = true;
         this.metadata = {
           source: data.series.sourceDescription,
           link: data.series.sourceLink
