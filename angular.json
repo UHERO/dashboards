@@ -46,6 +46,7 @@
                   "with": "projects/high-frequency-dashboard/src/environments/environment.prod.ts"
                 }
               ],
+              "baseHref": "/high-frequency-dashboard/",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
