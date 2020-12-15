@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng build tools --prod && ng serve --project=${PROJECT:-high-frequency-dashboard}",
-    "build": "ng build",
+    "build": "ng build tools --prod && ng build --project=${PROJECT:-high-frequency-dashboard} --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
