@@ -1,3 +1,7 @@
+.sidebar {
+  z-index: 10;
+}
+
 .w-sidebar {
   width: 200px;
   max-width: 200px;
@@ -17,4 +21,37 @@
   margin-left: -200px;
   left: -0.05%;
   transition: all .15s linear;
+}
+
+.navbar-light {
+  background-color: #FFF;
+
+  .category-btn {
+    border-radius: 0;
+    color: #1D667F;
+    display: block;
+    font-size: 0.9em;
+    font-weight: 400;
+    text-align: left;
+    width: 100%;
+  }
+
+  .category-btn:hover, .selected-category {
+    border-left: 5px solid #1D667F;
+    background-color: #E5E5E5;  
+    color: #1D667F;
+    text-decoration: none;
+  }
+
+  #built-by {
+    color: #505050;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin: 0;
+    padding-left: .5em;  
+  }
+
+  .analytics-logo {
+    padding: 0.5rem;
+  }
 }

@@ -1,3 +1,10 @@
+.dashboard-title-bar {
+  background-color: #1D667F;
+  a {
+    color: #FFFFFF;
+  }
+}
+
 .w-sidebar {
   width: 200px;
   max-width: 200px;
@@ -17,4 +24,13 @@
   margin-left: -200px;
   left: -0.05%;
   transition: all .15s linear;
+}
+
+.sidebar-toggle-btn, .navbar-brand {
+  color: #1D667F;
+}
+
+.series-description {
+  font-size: 0.8em;
+  margin-bottom: 0;
 }

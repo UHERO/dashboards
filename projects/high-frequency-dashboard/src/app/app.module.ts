@@ -15,6 +15,13 @@ import { ToolsModule } from 'tools';
       useValue: environment,
     },
     {
+      provide: "logo",
+      useValue: {
+        altText: "UHERO Analytics Logo",
+        analyticsLogoSrc: "assets/Analytics_Logo.svg",
+      },
+    },
+    {
       provide: 'dashboardData',
       useValue:
         [
@@ -36,7 +43,7 @@ import { ToolsModule } from 'tools';
             range: { start: null, end: null },
             smoothing: [
               { name: 'Daily', value: 'rawValues', yoy: false },
-            ]
+            ],
           },
           {
             name: 'Unemployment Claims',
@@ -53,10 +60,10 @@ import { ToolsModule } from 'tools';
               { handle: 'KAU', name: 'Kauai County' },
               { handle: 'MAU', name: 'Maui County' },
             ],
-            range: { start: null, end: null },
+            range: { start: '2000-08-19', end: null },
             smoothing: [
               { name: 'Weekly', value: 'rawValues', yoy: false },
-            ]
+            ],
           },
           {
             name: 'Bankruptcies',
@@ -73,7 +80,10 @@ import { ToolsModule } from 'tools';
               { name: '30 Day Moving Average', value: '30', yoy: true },
               { name: '7 Day Moving Average', value: '7', yoy: true },
               { name: 'Daily', value: 'rawValues', yoy: false },
-            ]
+            ],
+            description: `Bankruptcies are filed under particular Chapters.
+            The above data indicate total bankruptcies filed across all Chapters.
+            Moving averages show the trailing period.`
           },
           {
             name: 'Mortgage Payments',
@@ -87,19 +97,15 @@ import { ToolsModule } from 'tools';
             range: { start: null, end: null },
             smoothing: [
               { name: 'Monthly', value: 'rawValues', yoy: false },
-            ]
+            ],
+            description: `Data is gathered by the analytics firm Black Knight Inc.`
           },
-          /* {
-            name: 'Job Postings',
-            ids: [29759],
-            frequencies: ['W'],
-            geographies: [{ handle: 'HI', name: 'State' }]
-          }, */
           {
             name: 'Passenger Count',
             chartType: 'line',
             measurements: {
               dropdown: true,
+              label: 'Select Passenger Origin',
               options: [
                 { name: 'Total', baseNames: ['VAPNS'] },
                 { name: 'Domestic', baseNames: ['VAPDMNS'] },
@@ -112,22 +118,10 @@ import { ToolsModule } from 'tools';
             geographies: [{ handle: 'HI', name: 'State of Hawaiʻi' }],
             range: { start: '2019-01-01', end: null },
             smoothing: [
-              { name: '7 Day Moving Average', value: '7', yoy: true },
+              { name: '7 Day Moving Average', value: '7', yoy: true, lag: 1 },
               { name: 'Raw Daily Totals', value: 'rawValues', yoy: true, lag: 1 },
             ]
           },
-          /* {
-            name: 'Google Mobility Trends',
-            ids: [29746, 29747, 29748, 29749, 29750, 29751],
-            frequencies: [{ name: 'Daily', handle: 'D' }],
-            geographies: [
-              { handle: 'HI', name: 'State' },
-              { handle: 'HAW', name: 'Hawaii County' },
-              { handle: 'HON', name: 'Honolulu County' },
-              { handle: 'KAU', name: 'Kauai County' },
-              { handle: 'MAU', name: 'Maui County' },
-            ]
-          }, */
           {
             name: 'Small Business Activity',
             chartType: 'area',
@@ -145,7 +139,8 @@ import { ToolsModule } from 'tools';
             range: { start: null, end: null },
             smoothing: [
               { name: 'Weekly', value: 'rawValues' },
-            ]
+            ],
+            description: `Data is collected by Womply, a firm that aggregates credit card transaction information from businesses.`
           },
           {
             name: 'Open Table Restaurant Activity',
@@ -159,7 +154,11 @@ import { ToolsModule } from 'tools';
             range: { start: null, end: null },
             smoothing: [
               { name: 'Daily', value: 'rawValues' },
-            ]
+            ],
+            description: `This data shows the year-over-year change in seated diners at restaurants in the OpenTable network.
+            Take-out and delivery meals are not included.`,
+            descriptionLink: `https://www.opentable.com/state-of-industry`,
+            descriptionLinkText: `Find out more about Open Table's methodology here.`
           },
         ],
     },

@@ -1,8 +1,6 @@
-import { Component, OnInit, Input, Injectable, Inject, Output } from '@angular/core';
-import { EventEmitter } from 'protractor';
-import { ApiService } from '../api.service';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { HelperService } from '../helper.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'lib-series-sidebar',
@@ -11,13 +9,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SeriesSidebarComponent implements OnInit {
   @Input() dashboardData: Array<any>;
-  //@Output() updateDashboardView = new EventEmitter();
-  currentGeo;
 
   constructor(
     private helperService: HelperService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    @Inject('logo') public logo,
 ) {}
 
   ngOnInit(): void {

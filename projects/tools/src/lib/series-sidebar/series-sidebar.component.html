@@ -1,7 +1,8 @@
-<div class="col-3 p-0 h-100 w-sidebar navbar-collapse collapse d-none d-md-flex sidebar">
-  <div class="navbar-dark bg-dark position-fixed h-100 w-sidebar">
+<div class="p-0 h-100 w-sidebar navbar-collapse collapse d-flex sidebar">
+  <div class="navbar-light h-100 w-sidebar">
     <ng-template ngFor let-category [ngForOf]="dashboardData" let-i="index">
-      <button class="btn btn-link" type="button" (click)="updateSelectedCategory(category)">
+      <button [class.selected-category]="category.selected" class="category-btn btn btn-link" type="button"
+        (click)="updateSelectedCategory(category)">
         {{category.name}}
       </button>
       <lib-geo-selector *ngIf="category.geographies.length > 1 && category.selected" [regions]="category.geographies"
@@ -9,9 +10,15 @@
       <lib-freq-selector *ngIf="category.selected" [frequencies]="category.frequencies" class="geo-selector">
       </lib-freq-selector>
       <lib-measurement-selector *ngIf="category.selected && category.measurements.dropdown"
-        [measurements]="category.measurements.options" class="geo-selector"></lib-measurement-selector>
+        [measurements]="category.measurements.options" [label]="category.measurements.label" class="geo-selector">
+      </lib-measurement-selector>
       <lib-smoothing-selector *ngIf="category.selected && category.smoothing.length > 1"
         [smoothingCalcs]="category.smoothing" class="geo-selector"></lib-smoothing-selector>
     </ng-template>
+    <span class="analytics-logo">
+      <p id="built-by">Built By</p>
+      <a href="https://uhero.hawaii.edu/uhero-analytics/"><img [src]="logo.analyticsLogoSrc"
+          alt="UHERO Analytics logo"></a>
+    </span>
   </div>
 </div>

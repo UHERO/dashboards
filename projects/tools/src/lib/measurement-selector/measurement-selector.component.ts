@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class MeasurementSelectorComponent implements OnDestroy {
   @Input() measurements: Array<Measurement>;
+  @Input() label: string;
   selectedMeasurement: Measurement;
   measurementSubscription: Subscription;
 

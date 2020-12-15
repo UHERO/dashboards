@@ -1,0 +1,42 @@
+.data-source {
+  font-size: 0.8em;
+  padding-top: 0.5rem;
+}
+
+.highcharts-grid-line {
+  stroke: none;
+}
+
+.highcharts-color-0 {
+  fill: #1D667F;
+  stroke: #1D667F;
+}
+
+.highcharts-color-1 {
+  fill: #F6A01B;
+  stroke: #F6A01B;
+}
+
+.highcharts-navigator-series {
+  fill: #505050;
+  stroke: #505050;
+}
+
+.highcharts-title {
+  color: #505050;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.highcharts-credits {
+  display: none;
+}
+
+.highcharts-tooltip {
+  .series-0 {
+    fill: #1D667F;
+  }
+  .series-1 {
+    fill: #F6A01B;
+  }
+}

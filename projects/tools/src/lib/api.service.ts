@@ -29,7 +29,6 @@ export class ApiService {
 
   fetchMeasurementSeries(id: number, geo: string, freq: string, noCache: boolean) {
     if (this.cachedMeasureSeries[id + geo + freq]) {
-      console.log('cached', this.cachedMeasureSeries)
       return observableOf(this.cachedMeasureSeries[id + geo + freq]);
     } else {
       const caching = noCache ? '&nocache' : '';
@@ -45,7 +44,6 @@ export class ApiService {
 
   fetchSeries(name: string, noCache: boolean) {
     if (this.cachedSeries[name]) {
-      console.log('cachedSeries', this.cachedSeries[name])
       return observableOf(this.cachedSeries[name]);
     } else {
       const caching = noCache ? '&nocache' : '';

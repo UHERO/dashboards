@@ -3,6 +3,7 @@ import { HelperService } from '../helper.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Frequency, Geography, Smoothing, Measurement } from '../tools.models';
+import * as Highstock from 'highcharts/highstock';
 
 @Component({
   selector: 'lib-dashboard-view',
@@ -66,5 +67,15 @@ export class DashboardViewComponent implements OnDestroy {
     this.freqSub.unsubscribe();
     this.measurementSub.unsubscribe();
     this.smoothingSub.unsubscribe();
+  }
+
+  toggleSidebar(event) {
+    setTimeout(() => {
+      Highstock.charts.forEach((chart) => {
+        if (chart) {
+          chart.reflow();
+        }
+      });
+    }, 1000);
   }
 }

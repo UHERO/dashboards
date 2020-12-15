@@ -4,4 +4,26 @@ body {
   height: 100vh;
   overflow-x: hidden;
   padding-top: 55px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+lib-geo-selector,
+lib-measurement-selector,
+lib-smoothing-selector {
+  display: block;
+  margin: 0 auto;
+  padding: 0.5em 0;
+  width: 95%;
+}
+
+lib-geo-selector label,
+lib-measurement-selector label,
+lib-smoothing-selector label {
+  color: #505050;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.custom-select {
+  font-size: 0.85em;
 }

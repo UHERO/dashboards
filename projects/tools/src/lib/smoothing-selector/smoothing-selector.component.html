@@ -1,4 +1,5 @@
-<select [ngModel]="selectedSmoothing?.value" (ngModelChange)="onChange($event)" class="custom-select" aria-label="smoothing-selector">
+<label for="smoothing-dropdown" class="form-label">Smoothing:</label>
+<select id="smoothing-dropdown" [ngModel]="selectedSmoothing?.value" (ngModelChange)="onChange($event)" class="custom-select" aria-label="smoothing-selector">
   <option [ngValue]="calc?.value" *ngFor="let calc of smoothingCalcs">
       {{calc.name}}
   </option>
