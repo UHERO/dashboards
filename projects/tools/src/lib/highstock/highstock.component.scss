@@ -29,12 +29,13 @@
 
 .highcharts-title {
   color: #505050;
+  font-family: sans-serif;
   font-size: 1.2em;
   text-align: center;
 }
 
-.highcharts-credits {
-  display: none;
+.highcharts-graph {
+  stroke-width: 1px;
 }
 
 .highcharts-tooltip {
@@ -44,4 +45,8 @@
   .series-1 {
     fill: #F6A01B;
   }
+}
+
+.highcharts-credits {
+  font-size: 0.5em;
 }

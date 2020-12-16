@@ -67,33 +67,24 @@ export class HighstockComponent implements OnChanges {
           yoyChartSeries.push(this.formatChartSeriesObj(chartLevelData.dates, data.series.title, data.observations.observationStart, yoyData, 'area'));
         }
         this.yoyChartOptions.series = yoyChartSeries;
-        this.yoyChartOptions.title = {
-          text: `Percent Change in ${data.series.title}, Year-Over-Year`
-        }
         this.chartOptions.series = chartSeries;
-        this.chartOptions.title = {
-          text: `${data.series.title} ${this.selectedGeo.name}`,
-          useHTML: true
+        this.defineChartObjSettings(this.chartOptions, data.series.unitsLabel, `${data.series.title} ${this.selectedGeo.name}`);
+        if (this.smoothing.yoy) {
+          this.defineChartObjSettings(this.yoyChartOptions, `% Change in ${data.series.title}`, `Percent Change in ${data.series.title}, Year-Over-Year`);
+          this.displayYoyChart = true;
         }
-        this.chartOptions.tooltip = {
-          valueDecimals: 2
-        };
-        this.defineChartObjSettings(this.chartOptions, data.series.unitsLabel);
         this.showChart = true;
         this.updateChart = true;
         this.loading = false;
-        if (this.smoothing.yoy) {
-          this.defineChartObjSettings(this.yoyChartOptions, 'yoy');
-          this.displayYoyChart = true;
-        }
       });
   }
 
-  defineChartObjSettings = (chartObj: Highcharts.Options, units: string) => {
+  defineChartObjSettings = (chartObj: Highcharts.Options, units: string, title: string) => {
     const logo = this.logo;
     const freq = this.selectedFreq.handle;
     const formatTooltip = (points, x, dec, frequency) => this.formatTooltip(points, x, dec, frequency);
     chartObj.chart = {
+      className: 'series-chart',
       styledMode: true,
       events: {
         load() {
@@ -103,6 +94,12 @@ export class HighstockComponent implements OnChanges {
         }
       }
     }
+    chartObj.credits = {
+      enabled: false
+    };
+    chartObj.title = {
+      text: title
+    };
     chartObj.exporting = {
       allowHTML: true,
       buttons: {
@@ -118,13 +115,7 @@ export class HighstockComponent implements OnChanges {
       },
       chartOptions: {
         chart: {
-          events: {
-            load() {
-              if (logo.analyticsLogoSrc) {
-                this.renderer.image(logo.analyticsLogoSrc, 0, 0, 141 / 1.75, 68 / 1.75).add();
-              }
-            }
-          },
+          styledMode: true,
           spacingBottom: 40
         },
         navigator: {
@@ -138,12 +129,13 @@ export class HighstockComponent implements OnChanges {
         },
         credits: {
           enabled: true,
-          text: `data.uhero.hawaii.edu/high-frequency-dashboard`,
           position: {
-            align: 'right',
-            x: -35,
-            y: -5
-          }
+            align: 'left',
+            verticalAlign: 'top',
+            x: 2,
+            y: 50,
+          },
+          text: 'data.uhero.hawaii.edu/high-frequency-dashboard',
         }
       }
     };

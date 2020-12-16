@@ -15,9 +15,9 @@
       <lib-smoothing-selector *ngIf="category.selected && category.smoothing.length > 1"
         [smoothingCalcs]="category.smoothing" class="geo-selector"></lib-smoothing-selector>
     </ng-template>
-    <span class="analytics-logo">
+    <span class="analytics-logo d-flex">
       <p id="built-by">Built By</p>
-      <a href="https://uhero.hawaii.edu/uhero-analytics/"><img [src]="logo.analyticsLogoSrc"
+      <a id="logo-link" href="https://uhero.hawaii.edu/uhero-analytics/"><img [src]="logo.analyticsLogoSrc"
           alt="UHERO Analytics logo"></a>
     </span>
   </div>

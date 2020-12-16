@@ -148,7 +148,7 @@ export class HelperService {
     return dates[frequency].map(d => d.toISOString().substr(0, 10));
   }
 
-  calculateAverage = (values) => values.reduce((acc, value) => acc + value, 0) / values.length;
+  calculateAverage = (values: Array<number>) => values.reduce((acc, value) => acc + value, 0) / values.length;
 
   calculateMovingAvg = (values: Array<any>, days: number) => {
     const mvgAvg = new Array(days - 1).fill(null);
@@ -156,25 +156,12 @@ export class HelperService {
       return [this.calculateAverage(values)];
     }
     for (let i = 0; i + days - 1 < values.length; i++) {
-      //console.log(i, i + days - 1)
       mvgAvg.push(this.calculateAverage(values.slice(i, i + days))); 
     }
-    //console.log('mvgAvg', mvgAvg)
     return mvgAvg;
   }
 
-  getLaggedData = (dates, values, yearLag) => {
-    /* const values = dates.map((date) => {
-      const dateExistsIndex = this.helperService.binarySearch(data.observations.transformationResults[0].dates, date.toISOString().substr(0, 10));
-      return dateExistsIndex > -1 ? +data.observations.transformationResults[0].values[dateExistsIndex] : null;
-    }); */
-    console.log('dates', dates.map((date) => {
-      const formattedDate = new Date(date.replace(/-/g, '/'));
-      const currentDate = new Date(formattedDate.getFullYear(), formattedDate.getMonth(), formattedDate.getDate())
-      const laggedDate = subYears(currentDate, yearLag);
-      const laggedDateExistsIndex = this.binarySearch(dates, laggedDate.toISOString().substr(0, 10));
-      return laggedDateExistsIndex > -1 ? values[laggedDateExistsIndex] : null;
-    }));
+  getLaggedData = (dates: Array<string>, values: Array<number>, yearLag: number) => {
     return dates.map((date) => {
       const formattedDate = new Date(date.replace(/-/g, '/'));
       const currentDate = new Date(formattedDate.getFullYear(), formattedDate.getMonth(), formattedDate.getDate())

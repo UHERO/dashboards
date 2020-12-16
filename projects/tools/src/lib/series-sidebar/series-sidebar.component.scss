@@ -52,6 +52,11 @@
   }
 
   .analytics-logo {
+    align-items: baseline;
     padding: 0.5rem;
+
+    #logo-link {
+      width: 100%;
+    }
   }
 }

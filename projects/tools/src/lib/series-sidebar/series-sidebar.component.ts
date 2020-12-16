@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, Input, Inject } from '@angular/core';
 import { HelperService } from '../helper.service';
 import { Router } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './series-sidebar.component.html',
   styleUrls: ['./series-sidebar.component.scss'],
 })
-export class SeriesSidebarComponent implements OnInit {
+export class SeriesSidebarComponent {
   @Input() dashboardData: Array<any>;
 
   constructor(
@@ -15,10 +15,6 @@ export class SeriesSidebarComponent implements OnInit {
     private router: Router,
     @Inject('logo') public logo,
 ) {}
-
-  ngOnInit(): void {
-    console.log(this.dashboardData);
-  }
 
   updateSelectedCategory(category) {
     this.helperService.updateSelectedCategory(category);
