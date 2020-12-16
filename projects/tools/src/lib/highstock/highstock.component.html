@@ -1,4 +1,3 @@
-<p class="data-source" *ngIf="metadata?.source">Source: <a [attr.href]="metadata?.link">{{metadata?.source}}</a></p>
 <i *ngIf="loading" class="fas fa-spinner fa-spin loading-icon"></i>
 <highcharts-chart *ngIf="showChart && chartOptions"
 [Highcharts]="Highcharts"
@@ -7,6 +6,7 @@
 [(update)]="updateChart"
 style="width: 100%; height: 400px; display: block;"
 ></highcharts-chart>
+<p class="data-source" *ngIf="metadata?.source">Source: <a [attr.href]="metadata?.link">{{metadata?.source}}</a></p>
 <highcharts-chart *ngIf="displayYoyChart && yoyChartOptions"
 [Highcharts]="Highcharts"
 [constructorType]="chartConstructor"
