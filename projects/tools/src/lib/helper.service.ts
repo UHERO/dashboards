@@ -21,7 +21,6 @@ export class HelperService {
   currentSmoothing = this.currentSmoothingChange.asObservable();
   highstockDataChange: BehaviorSubject<any> = new BehaviorSubject([]);
   highstockData = this.highstockDataChange.asObservable();
-  //seriesCache = {};
 
   constructor(
     @Inject('dashboardData') public dashboardData: Array<any>,

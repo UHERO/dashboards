@@ -18,7 +18,6 @@ export class SeriesSidebarComponent {
 
   updateSelectedCategory(category) {
     this.helperService.updateSelectedCategory(category);
-    //this.updateDashboardView.emit()
     this.router.navigate([`/`], { queryParams: {cat: category.name.replace(/\s/g, '')}})
   }
 }

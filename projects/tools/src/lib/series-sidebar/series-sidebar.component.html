@@ -7,7 +7,7 @@
       </button>
       <lib-geo-selector *ngIf="category.geographies.length > 1 && category.selected" [regions]="category.geographies"
         class="geo-selector"></lib-geo-selector>
-      <lib-freq-selector *ngIf="category.selected" [frequencies]="category.frequencies" class="geo-selector">
+      <lib-freq-selector *ngIf="category.frequencies.length > 1 && category.selected" [frequencies]="category.frequencies" class="geo-selector">
       </lib-freq-selector>
       <lib-measurement-selector *ngIf="category.selected && category.measurements.dropdown"
         [measurements]="category.measurements.options" [label]="category.measurements.label" class="geo-selector">
