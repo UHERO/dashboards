@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://api.uhero.hawaii.edu/v1',
+  apiUrl: 'https://api.uhero.hawaii.edu/v1.u',
   portalUrl: 'http://localhost:4200/#'
 };
 

@@ -40,7 +40,12 @@ import { ToolsModule } from 'tools';
               { handle: 'KAU', name: 'Kauai County' },
               { handle: 'MAU', name: 'Maui County' },
             ],
-            range: { start: null, end: null },
+            range: {
+              // limit how much data is returned with apiStart
+              // apiStart may be earlier than 'start' as a workaround to
+              // accomodate smoothing/lagged data
+              apiStart: null, start: null, end: null
+            },
             smoothing: [
               { name: 'Daily', value: 'rawValues', yoy: false },
             ],
@@ -50,7 +55,7 @@ import { ToolsModule } from 'tools';
             chartType: 'line',
             measurements: {
               dropdown: false,
-              baseNames: ['UICININS', 'UICNS']
+              baseNames: ['UIICNS', 'UICCNS']
             },
             frequencies: [{ name: 'Weekly', handle: 'W' }],
             geographies: [
@@ -60,7 +65,7 @@ import { ToolsModule } from 'tools';
               { handle: 'KAU', name: 'Kauai County' },
               { handle: 'MAU', name: 'Maui County' },
             ],
-            range: { start: '2000-08-19', end: null },
+            range: { apiStart: '2000-08-19', start: '2000-08-19', end: null },
             smoothing: [
               { name: 'Weekly', value: 'rawValues', yoy: false },
             ],
@@ -74,7 +79,7 @@ import { ToolsModule } from 'tools';
             },
             frequencies: [{ name: 'Daily', handle: 'D' }],
             geographies: [{ handle: 'HI', name: 'State of Hawaiʻi' }],
-            range: { start: '2007-01-01', end: null },
+            range: { apiStart: '2005-01-01', start: '2007-01-01', end: null },
             smoothing: [
               { name: '90 Day Moving Average', value: '90', yoy: true },
               { name: '30 Day Moving Average', value: '30', yoy: true },
@@ -94,7 +99,7 @@ import { ToolsModule } from 'tools';
             },
             frequencies: [{ name: 'Monthly', handle: 'M' }],
             geographies: [{ handle: 'HI', name: 'State of Hawaiʻi' }],
-            range: { start: null, end: null },
+            range: { apiStart: null, start: null, end: null },
             smoothing: [
               { name: 'Monthly', value: 'rawValues', yoy: false },
             ],
@@ -116,7 +121,7 @@ import { ToolsModule } from 'tools';
             },
             frequencies: [{ name: 'Daily', handle: 'D' }],
             geographies: [{ handle: 'HI', name: 'State of Hawaiʻi' }],
-            range: { start: '2019-01-01', end: null },
+            range: { apiStart: '2017-01-01', start: '2019-01-01', end: null },
             smoothing: [
               { name: '7 Day Moving Average', value: '7', yoy: true, lag: 1 },
               { name: 'Raw Daily Totals', value: 'rawValues', yoy: true, lag: 1 },
@@ -136,7 +141,7 @@ import { ToolsModule } from 'tools';
               { handle: 'HON', name: 'Honolulu County' },
               { handle: 'MAU', name: 'Maui County' },
             ],
-            range: { start: null, end: null },
+            range: { apiStart: null, start: null, end: null },
             smoothing: [
               { name: 'Weekly', value: 'rawValues' },
             ],
@@ -151,7 +156,7 @@ import { ToolsModule } from 'tools';
             },
             frequencies: [{ name: 'Daily', handle: 'D' }],
             geographies: [{ handle: 'HI', name: 'State of Hawaiʻi' }],
-            range: { start: null, end: null },
+            range: { apiStart: null, start: null, end: null },
             smoothing: [
               { name: 'Daily', value: 'rawValues' },
             ],

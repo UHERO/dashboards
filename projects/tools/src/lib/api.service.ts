@@ -42,12 +42,13 @@ export class ApiService {
     }
   }
 
-  fetchSeries(name: string, noCache: boolean) {
+  fetchSeries(name: string, start: string, noCache: boolean) {
     if (this.cachedSeries[name]) {
       return observableOf(this.cachedSeries[name]);
     } else {
       const caching = noCache ? '&nocache' : '';
-      let packageSeries$ = this.http.get(`${this.baseUrl}/series?name=${name}&u=uhero&expand=true${caching}`, this.httpOptions).pipe(
+      const startParam = start ? `&start=${start}` : '';
+      let packageSeries$ = this.http.get(`${this.baseUrl}/series?name=${name}&u=uhero${startParam}&expand=true${caching}`, this.httpOptions).pipe(
         map(mapData),
         tap(val => {
           this.cachedSeries[name] = val;
