@@ -104,7 +104,7 @@ export class HelperService {
     return newSmoothing;
   }
 
-  getSeriesData = (name: string) => this.apiService.fetchSeries(name, false).toPromise();
+  getSeriesData = (name: string, date: string) => this.apiService.fetchSeries(name, date, false).toPromise();
 
   binarySearch = (valueList, date) => {
     let start = 0;

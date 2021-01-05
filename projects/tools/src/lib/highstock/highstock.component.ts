@@ -38,8 +38,10 @@ export class HighstockComponent implements OnChanges {
   }
 
   ngOnChanges() {
+    const seriesName = `${this.measurementName}@${this.selectedGeo.handle}.${this.selectedFreq.handle}`;
+    const apiStartDate = this.currentCategory.range.apiStart || '';
     this.helperService
-      .getSeriesData(`${this.measurementName}@${this.selectedGeo.handle}.${this.selectedFreq.handle}`)
+      .getSeriesData(seriesName, apiStartDate)
       .then((data) => {
         this.loading = true;
         this.metadata = {
@@ -241,7 +243,7 @@ export class HighstockComponent implements OnChanges {
     return {
       type: chartType,
       name: title,
-      data: data.slice(startDateIndex, endDateIndex),
+      data: data.slice(startDateIndex, endDateIndex + 1),
       pointStart: Date.parse(startDate),
       pointInterval: this.getPointInterval(this.selectedFreq.handle),
       pointIntervalUnit: this.getPointIntervalUnit(this.selectedFreq.handle),
