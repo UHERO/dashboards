@@ -25,7 +25,8 @@
             "aot": true,
             "assets": [
               "projects/high-frequency-dashboard/src/favicon.ico",
-              "projects/high-frequency-dashboard/src/assets"
+              "projects/high-frequency-dashboard/src/assets",
+              "projects/high-frequency-dashboard/src/manifest.webmanifest"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -66,7 +67,9 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "projects/high-frequency-dashboard/ngsw-config.json"
             }
           }
         },
@@ -96,7 +99,8 @@
             "karmaConfig": "projects/high-frequency-dashboard/karma.conf.js",
             "assets": [
               "projects/high-frequency-dashboard/src/favicon.ico",
-              "projects/high-frequency-dashboard/src/assets"
+              "projects/high-frequency-dashboard/src/assets",
+              "projects/high-frequency-dashboard/src/manifest.webmanifest"
             ],
             "styles": [
               "projects/high-frequency-dashboard/src/styles.scss"
