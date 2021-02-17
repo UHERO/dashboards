@@ -52,6 +52,25 @@ import { ServiceWorkerModule } from '@angular/service-worker';
             ],
           },
           {
+            name: 'COVID-19 Vaccinations',
+            chartType: 'line',
+            measurements: {
+              dropdown: false,
+              baseNames: ['VACCINETWO'],
+            },
+            frequencies: [{ name: 'Daily', handle: 'D' }],
+            geographies: [
+              { handle: 'HI', name: 'State of Hawaiʻi' },
+              { handle: 'US', name: 'United States' },
+            ],
+            range: {
+              apiStart: null, start: null, end: null
+            },
+            smoothing: [
+              { name: 'Daily', value: 'rawValues', yoy: false },
+            ]
+          },
+          {
             name: 'Unemployment Claims',
             chartType: 'line',
             measurements: {
