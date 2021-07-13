@@ -56,12 +56,11 @@ import { ServiceWorkerModule } from '@angular/service-worker';
             chartType: 'line',
             measurements: {
               dropdown: false,
-              baseNames: ['VACCINETWO'],
+              baseNames: ['CV_SHNRCOMP'],
             },
             frequencies: [{ name: 'Daily', handle: 'D' }],
             geographies: [
               { handle: 'HI', name: 'State of Hawaiʻi' },
-              { handle: 'US', name: 'United States' },
             ],
             range: {
               apiStart: null, start: null, end: null
