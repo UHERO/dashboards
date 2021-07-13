@@ -22,7 +22,6 @@
             "main": "projects/high-frequency-dashboard/src/main.ts",
             "polyfills": "projects/high-frequency-dashboard/src/polyfills.ts",
             "tsConfig": "projects/high-frequency-dashboard/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/high-frequency-dashboard/src/favicon.ico",
               "projects/high-frequency-dashboard/src/assets",
@@ -37,7 +36,13 @@
               "node_modules/jquery/dist/jquery.slim.min.js",
               "node_modules/popper.js/dist/umd/popper.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
-            ]
+            ],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -51,7 +56,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -71,7 +75,8 @@
               "serviceWorker": true,
               "ngswConfigPath": "projects/high-frequency-dashboard/ngsw-config.json"
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -142,7 +147,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/tools/tsconfig.lib.json",
             "project": "projects/tools/ng-package.json"
