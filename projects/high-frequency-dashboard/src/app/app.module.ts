@@ -147,26 +147,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
             ]
           },
           {
-            name: 'Small Business Activity',
-            chartType: 'area',
-            measurements: {
-              dropdown: false,
-              baseNames: ['WOMPMER', 'WOMPREV']
-            },
-            frequencies: [{ name: 'Weekly', handle: 'W' }],
-            geographies: [
-              { handle: 'HI', name: 'State of Hawaiʻi' },
-              { handle: 'HAW', name: 'Hawaiʻi County' },
-              { handle: 'HON', name: 'Honolulu County' },
-              { handle: 'MAU', name: 'Maui County' },
-            ],
-            range: { apiStart: null, start: null, end: null },
-            smoothing: [
-              { name: 'Weekly', value: 'rawValues' },
-            ],
-            description: `Data is collected by Womply, a firm that aggregates credit card transaction information from businesses.`
-          },
-          {
             name: 'Open Table Restaurant Activity',
             chartType: 'area',
             measurements: {
