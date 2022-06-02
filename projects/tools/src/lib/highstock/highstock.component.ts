@@ -60,7 +60,7 @@ export class HighstockComponent implements OnChanges {
         if (this.smoothing.yoy) {
           yoyData = chartLevelData.dates.map((date, index) => {
             const currDate = new Date(this.dateStrReplaceHyphens(date));
-            const prevYearDate = subYears(new Date(currDate.getFullYear(), currDate.getMonth(), currDate.getDate()), 1).toISOString().substr(0, 10);
+            const prevYearDate = subYears(new Date(currDate.getFullYear(), currDate.getMonth(), currDate.getDate()), 1).toISOString().substring(0, 10);
             const prevYearDateIndex = this.helperService.binarySearch(chartLevelData.dates, prevYearDate);
             if (prevYearDateIndex > -1) {
               return (chartLevelData.levelData[index] - chartLevelData.levelData[prevYearDateIndex]) / chartLevelData.levelData[prevYearDateIndex];
