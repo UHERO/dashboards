@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { ToolsComponent } from './tools.component';
@@ -11,11 +11,20 @@ import { HighstockComponent } from './highstock/highstock.component';
 import { FreqSelectorComponent } from './freq-selector/freq-selector.component';
 import { MeasurementSelectorComponent } from './measurement-selector/measurement-selector.component';
 import { SmoothingSelectorComponent } from './smoothing-selector/smoothing-selector.component';
-
-
+import { RequestCache } from './request-cache';
+import { CacheInterceptor } from './cache.interceptor';
 
 @NgModule({
-  declarations: [ToolsComponent, SeriesSidebarComponent, DashboardViewComponent, GeoSelectorComponent, HighstockComponent, FreqSelectorComponent, MeasurementSelectorComponent, SmoothingSelectorComponent],
+  declarations: [
+    ToolsComponent,
+    SeriesSidebarComponent,
+    DashboardViewComponent,
+    GeoSelectorComponent,
+    HighstockComponent,
+    FreqSelectorComponent,
+    MeasurementSelectorComponent,
+    SmoothingSelectorComponent
+  ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -23,6 +32,10 @@ import { SmoothingSelectorComponent } from './smoothing-selector/smoothing-selec
     HttpClientModule,
     HighchartsChartModule
   ],
-  exports: [ToolsComponent, DashboardViewComponent]
+  exports: [ToolsComponent, DashboardViewComponent],
+  providers: [
+    RequestCache,
+    { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true }
+  ]
 })
 export class ToolsModule { }

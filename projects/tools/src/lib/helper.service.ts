@@ -144,7 +144,7 @@ export class HelperService {
         end: endDate
       })
     };
-    return dates[frequency].map(d => d.toISOString().substr(0, 10));
+    return dates[frequency].map(d => d.toISOString().substring(0, 10));
   }
 
   calculateAverage = (values: Array<number>) => values.reduce((acc, value) => acc + value, 0) / values.length;
@@ -165,7 +165,7 @@ export class HelperService {
       const formattedDate = new Date(date.replace(/-/g, '/'));
       const currentDate = new Date(formattedDate.getFullYear(), formattedDate.getMonth(), formattedDate.getDate())
       const laggedDate = subYears(currentDate, yearLag);
-      const laggedDateExistsIndex = this.binarySearch(dates, laggedDate.toISOString().substr(0, 10));
+      const laggedDateExistsIndex = this.binarySearch(dates, laggedDate.toISOString().substring(0, 10));
       return laggedDateExistsIndex ? values[laggedDateExistsIndex] : null;
     })
   }

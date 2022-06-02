@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 import { Frequency } from '../tools.models';
 import { HelperService } from '../helper.service';
 import { Subscription } from 'rxjs';
