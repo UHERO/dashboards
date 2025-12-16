@@ -154,6 +154,9 @@
           }
         }
       }
-    }},
-  "defaultProject": "high-frequency-dashboard"
+    }
+  },
+  "cli": {
+    "analytics": false
+  }
 }
