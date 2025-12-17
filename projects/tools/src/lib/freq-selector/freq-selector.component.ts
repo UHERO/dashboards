@@ -4,9 +4,10 @@ import { HelperService } from '../helper.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'lib-freq-selector',
-  templateUrl: './freq-selector.component.html',
-  styleUrls: ['./freq-selector.component.scss']
+    selector: 'lib-freq-selector',
+    templateUrl: './freq-selector.component.html',
+    styleUrls: ['./freq-selector.component.scss'],
+    standalone: false
 })
 export class FreqSelectorComponent implements OnDestroy {
   @Input() frequencies: Array<Frequency>;

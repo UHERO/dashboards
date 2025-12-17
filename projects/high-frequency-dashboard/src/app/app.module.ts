@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-import { ToolsModule } from 'tools';
+import { ToolsModule } from '../../../tools/src/lib/tools.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({

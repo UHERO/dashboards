@@ -4,9 +4,10 @@ import { HelperService } from '../helper.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'lib-geo-selector',
-  templateUrl: './geo-selector.component.html',
-  styleUrls: ['./geo-selector.component.scss']
+    selector: 'lib-geo-selector',
+    templateUrl: './geo-selector.component.html',
+    styleUrls: ['./geo-selector.component.scss'],
+    standalone: false
 })
 export class GeoSelectorComponent implements OnDestroy {
   @Input() regions: Array<Geography>;

@@ -4,9 +4,10 @@ import { Measurement } from '../tools.models';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'lib-measurement-selector',
-  templateUrl: './measurement-selector.component.html',
-  styleUrls: ['./measurement-selector.component.scss']
+    selector: 'lib-measurement-selector',
+    templateUrl: './measurement-selector.component.html',
+    styleUrls: ['./measurement-selector.component.scss'],
+    standalone: false
 })
 export class MeasurementSelectorComponent implements OnDestroy {
   @Input() measurements: Array<Measurement>;
