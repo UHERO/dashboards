@@ -81,18 +81,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "high-frequency-dashboard:build"
+            "buildTarget": "high-frequency-dashboard:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "high-frequency-dashboard:build:production"
+              "buildTarget": "high-frequency-dashboard:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "high-frequency-dashboard:build"
+            "buildTarget": "high-frequency-dashboard:build"
           }
         },
         "test": {
