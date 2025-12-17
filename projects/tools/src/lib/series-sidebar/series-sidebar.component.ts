@@ -3,9 +3,10 @@ import { HelperService } from '../helper.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'lib-series-sidebar',
-  templateUrl: './series-sidebar.component.html',
-  styleUrls: ['./series-sidebar.component.scss'],
+    selector: 'lib-series-sidebar',
+    templateUrl: './series-sidebar.component.html',
+    styleUrls: ['./series-sidebar.component.scss'],
+    standalone: false
 })
 export class SeriesSidebarComponent {
   @Input() dashboardData: Array<any>;

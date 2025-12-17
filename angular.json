@@ -15,12 +15,15 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/high-frequency-dashboard",
+            "outputPath": {
+              "base": "dist/high-frequency-dashboard"
+            },
             "index": "projects/high-frequency-dashboard/src/index.html",
-            "main": "projects/high-frequency-dashboard/src/main.ts",
-            "polyfills": "projects/high-frequency-dashboard/src/polyfills.ts",
+            "polyfills": [
+              "projects/high-frequency-dashboard/src/polyfills.ts"
+            ],
             "tsConfig": "projects/high-frequency-dashboard/tsconfig.app.json",
             "assets": [
               "projects/high-frequency-dashboard/src/favicon.ico",
@@ -37,12 +40,11 @@
               "node_modules/popper.js/dist/umd/popper.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ],
-            "vendorChunk": true,
             "extractLicenses": false,
-            "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true
+            "namedChunks": true,
+            "browser": "projects/high-frequency-dashboard/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -58,8 +60,6 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -72,8 +72,7 @@
                   "maximumError": "10kb"
                 }
               ],
-              "serviceWorker": true,
-              "ngswConfigPath": "projects/high-frequency-dashboard/ngsw-config.json"
+              "serviceWorker": "projects/high-frequency-dashboard/ngsw-config.json"
             }
           },
           "defaultConfiguration": ""

@@ -4,9 +4,10 @@ import { Smoothing } from '../tools.models';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'lib-smoothing-selector',
-  templateUrl: './smoothing-selector.component.html',
-  styleUrls: ['./smoothing-selector.component.scss']
+    selector: 'lib-smoothing-selector',
+    templateUrl: './smoothing-selector.component.html',
+    styleUrls: ['./smoothing-selector.component.scss'],
+    standalone: false
 })
 export class SmoothingSelectorComponent implements OnDestroy {
   @Input() smoothingCalcs: Array<Smoothing>;

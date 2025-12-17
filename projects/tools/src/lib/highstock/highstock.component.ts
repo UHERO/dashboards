@@ -8,10 +8,11 @@ import exportData from 'highcharts/modules/export-data';
 import offlineExport from 'highcharts/modules/offline-exporting';
 
 @Component({
-  selector: 'lib-highstock',
-  templateUrl: './highstock.component.html',
-  styleUrls: ['./highstock.component.scss'],
-  encapsulation: ViewEncapsulation.None
+    selector: 'lib-highstock',
+    templateUrl: './highstock.component.html',
+    styleUrls: ['./highstock.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class HighstockComponent implements OnChanges {
   @Input() measurementName: string;

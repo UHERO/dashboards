@@ -6,9 +6,10 @@ import { Frequency, Geography, Smoothing, Measurement } from '../tools.models';
 import * as Highstock from 'highcharts/highstock';
 
 @Component({
-  selector: 'lib-dashboard-view',
-  templateUrl: './dashboard-view.component.html',
-  styleUrls: ['./dashboard-view.component.scss'],
+    selector: 'lib-dashboard-view',
+    templateUrl: './dashboard-view.component.html',
+    styleUrls: ['./dashboard-view.component.scss'],
+    standalone: false
 })
 export class DashboardViewComponent implements OnDestroy {
   dashboardData: Array<any>;
