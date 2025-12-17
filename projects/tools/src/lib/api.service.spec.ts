@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 
 import { ApiService } from './api.service';
@@ -8,12 +8,13 @@ describe('ApiService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
+    imports: [],
+    providers: [
         ApiService,
-        { provide: 'environment', useValue: '' }
-      ],
-      imports: [HttpClientModule]
-    });
+        { provide: 'environment', useValue: '' },
+        provideHttpClient(withInterceptorsFromDi())
+    ]
+});
     service = TestBed.inject(ApiService);
   });
 
