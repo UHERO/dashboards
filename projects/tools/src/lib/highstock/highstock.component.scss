@@ -8,6 +8,37 @@
   font-size: 1.2em;
 }
 
+.highcharts-background {
+  background-color: #FFFFFF;
+  fill: #FFFFFF;
+}
+
+.highcharts-button {
+  .highcharts-button-box {
+    fill: #FFFFFF;
+  }
+
+  text {
+    fill: #505050;
+  }
+}
+
+.highcharts-range-selector-buttons {
+  .highcharts-label {
+    text {
+      fill: #000;
+    }
+  }
+}
+
+.highcharts-input-group {
+  .highcharts-label.highcharts-range-input {
+    text {
+      fill: #505050;
+    }
+  }
+}
+
 .highcharts-grid-line {
   stroke: none;
 }
@@ -29,6 +60,8 @@
 
 .highcharts-title {
   color: #505050;
+  fill: #505050;
+  font-weight: normal;
   font-family: sans-serif;
   font-size: 1.2em;
   text-align: center;
@@ -49,4 +82,15 @@
 
 .highcharts-credits {
   font-size: 0.5em;
+}
+
+.highcharts-axis-labels,
+.highcharts-axis-title {
+  fill: #505050;
+}
+
+.highcharts-scrollbar-thumb,
+.highcharts-navigator-handle {
+  fill: #CCCCCC;
+  stroke: #CCCCCC;
 }
